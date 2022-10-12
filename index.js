@@ -6,7 +6,8 @@ app.get('/', (req, res) => {
 })
 
 app.post('/test', (req,res) => {
-    const logBody = req.body.map(el => console.log(el))
+    const logBody = req.body
+    console.log(logBody)
     const {billAddress} = req.body
     console.log("-----")
     console.log(typeof(billAddress))
