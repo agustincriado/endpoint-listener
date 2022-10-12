@@ -2,7 +2,7 @@ const expres = require('express')
 const app = expres()
 
 app.use(expres.json())
-app.use(expres.urlencoded())
+// app.use(expres.urlencoded())
 
 app.get('/', (req, res) => {
     res.send("Hello there")
