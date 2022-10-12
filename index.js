@@ -13,7 +13,7 @@ app.post('test', (req,res) => {
     console.log("-----")
     res.send("OK")
 })
-const PORT = 3001 || process.env.PORT
+const PORT = process.env.PORT || 4242
 
 const server = app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
