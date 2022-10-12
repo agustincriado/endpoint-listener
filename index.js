@@ -5,7 +5,7 @@ app.get('/', (req, res) => {
     res.send("Hello there")
 })
 
-app.post('test', (req,res) => {
+app.post('/test', (req,res) => {
     const logBody = req.body.map(el => console.log(el))
     const {billAddress} = req.body
     console.log("-----")
