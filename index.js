@@ -1,16 +1,16 @@
 const expres = require('express')
 const app = expres()
+
 app.use(expres.json())
+app.use(express.urlencoded())
 app.get('/', (req, res) => {
     res.send("Hello there")
 })
 
 app.post('/test', (req,res) => {
     const logBody = req.body
-    console.log(logBody)
-    const {billAddress} = req.body
     console.log("-----")
-    console.log(typeof(billAddress))
+    console.log(logBody)
     console.log("-----")
     res.send("OK")
 })
