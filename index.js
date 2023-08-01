@@ -20,12 +20,20 @@ app.post('/test', (req,res, next) => {
 app.post('/proxy', (req, res, next) => {
     const { url, method, headers, body } = req.body
     const parsedHeaders = headers.replace(/'/g, `"`)
-    const sendFetch = fetch(url, {
+    const GET_OBJECT = {
+        method: method,
+        headers: JSON.parse(parsedHeaders),
+    }
+    const POST_OBJECT = {
         method: method,
         headers: JSON.parse(parsedHeaders),
         body: body
+    }
+    const sendFetch = fetch(url, method === 'GET' ? GET_OBJECT : POST_OBJECT)
+    sendFetch.then(response => {
+        if(response.ok) return response.text()
+        return 'No response'
     })
-    sendFetch.then(response => response.text())
     .then(data => res.send(data)).catch(err => {
         res.send(err)})
 })
